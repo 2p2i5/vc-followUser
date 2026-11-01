@@ -27,6 +27,14 @@ import {
 } from "@webpack/common";
 import { type PropsWithChildren, type SVGProps } from "react";
 
+
+async function sleep(ms: number): Promise<void> { // sleep function for delay from https://www.geeksforgeeks.org/typescript/how-to-implement-sleep-function-in-typescript/
+    return new Promise(
+        (resolve) => setTimeout(resolve, ms));
+}
+
+
+
 const HeaderBarIcon = findComponentByCodeLazy(".HEADER_BAR_BADGE_BOTTOM,", 'position:"bottom"');
 
 interface BaseIconProps extends IconProps {
@@ -149,6 +157,12 @@ export const settings = definePluginSettings({
         description: "Attempt to move you to the channel when is not full anymore",
         restartNeeded: false,
         default: true,
+    },
+    delay: {
+        type: OptionType.NUMBER,
+        description: "How long to wait before joining the voice channel, in miliseconds",
+        restartNeeded: false,
+        default: 1000,
     }
 });
 
@@ -188,7 +202,10 @@ function getChannelId(userId: string) {
     return null;
 }
 
-function triggerFollow(userChannelId: string | null = getChannelId(settings.store.followUserId)) {
+async function triggerFollow(userChannelId: string | null = getChannelId(settings.store.followUserId)) {
+    
+    await sleep(settings.store.delay);
+
     if (!settings.store.followUserId) return;
 
     const myChanId = SelectedChannelStore.getVoiceChannelId();
@@ -296,6 +313,10 @@ export default definePlugin({
         {
             name: "benjas333",
             id: 456577284464443394n,
+        },
+        {
+            name: "2p2i5",
+            id: 1003897681225207890n,
         },
     ],
 
