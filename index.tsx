@@ -375,7 +375,7 @@ export default definePlugin({
                     triggerFollow(channelId).catch(e => console.error(e));
                 } else if (oldChannelId) {
                     // leave -> disconnect
-                    triggerFollow(null);
+                    triggerFollow(null).catch(e => console.error(e));
                 }
             }
         },
