@@ -162,7 +162,7 @@ export const settings = definePluginSettings({
         type: OptionType.NUMBER,
         description: "How long to wait before joining the voice channel, in miliseconds",
         restartNeeded: false,
-        default: 1000,
+        default: 0,
     }
 });
 
