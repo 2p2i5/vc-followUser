@@ -407,7 +407,7 @@ export default definePlugin({
                     if (e.shiftKey) {
                         settings.store.followUserId = "";
                     } else {
-                        triggerFollow();
+                        triggerFollow().catch(e => console.error(e));
                     }
                 }}
             />}
