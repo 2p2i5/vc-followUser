@@ -33,8 +33,6 @@ async function sleep(ms: number): Promise<void> {
         (resolve) => setTimeout(resolve, ms));
 }
 
-
-
 const HeaderBarIcon = findComponentByCodeLazy(".HEADER_BAR_BADGE_BOTTOM,", 'position:"bottom"');
 
 interface BaseIconProps extends IconProps {
