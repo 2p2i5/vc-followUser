@@ -349,7 +349,7 @@ export default definePlugin({
 
                 // rejoin if the setting is on and you disconnected yourself
                 if (settings.store.autoRejoin && isMe && !channelId && oldChannelId) {
-                    triggerFollow();
+                    triggerFollow().catch(e => console.error(e));
                     continue;
                 }
 
