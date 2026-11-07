@@ -273,7 +273,7 @@ function toggleFollow(userId: string) {
     } else {
         settings.store.followUserId = userId;
         if (settings.store.executeOnFollow) {
-            triggerFollow();
+            triggerFollow().catch(e => console.error(e));
         }
     }
 }
