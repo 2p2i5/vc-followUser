@@ -203,10 +203,9 @@ function getChannelId(userId: string) {
 }
 
 async function triggerFollow(userChannelId: string | null = getChannelId(settings.store.followUserId)) {
+    if (!settings.store.followUserId) return;
     
     await sleep(settings.store.delay);
-
-    if (!settings.store.followUserId) return;
 
     const myChanId = SelectedChannelStore.getVoiceChannelId();
     if (userChannelId) {
