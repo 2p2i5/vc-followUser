@@ -372,7 +372,7 @@ export default definePlugin({
 
                 if (channelId) {
                     // move or join new channel -> also join
-                    triggerFollow(channelId);
+                    triggerFollow(channelId).catch(e => console.error(e));
                 } else if (oldChannelId) {
                     // leave -> disconnect
                     triggerFollow(null);
