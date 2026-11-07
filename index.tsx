@@ -361,7 +361,7 @@ export default definePlugin({
                     if (channel.userLimit !== 0 && memberCount !== null && memberCount === (channel.userLimit - 1) && !PermissionStore.can(PermissionsBits.MOVE_MEMBERS, channel)) {
                         const users = Object.values(channelVoiceStates).map(x => x.userId);
                         if (users.includes(settings.store.followUserId)) {
-                            triggerFollow(oldChannelId);
+                            triggerFollow(oldChannelId).catch(e => console.error(e));
                             continue;
                         }
                     }
