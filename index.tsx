@@ -28,7 +28,7 @@ import {
 import { type PropsWithChildren, type SVGProps } from "react";
 
 
-async function sleep(ms: number): Promise<void> { // sleep function for delay from https://www.geeksforgeeks.org/typescript/how-to-implement-sleep-function-in-typescript/
+async function sleep(ms: number): Promise<void> {
     return new Promise(
         (resolve) => setTimeout(resolve, ms));
 }
